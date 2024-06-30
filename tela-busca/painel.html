@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="/tela-busca/assents/js/login.js"></script>
+    <script>
+        // Inicializa as estruturas utilizadas pelo LoginApp e carrega os dados
+        initLoginApp();
+
+        // Função para verificar se o usuário está logado
+        function verificaLogin() {
+            if (!usuarioCorrente.login) {
+                window.location.href = LOGIN_URL;
+            }
+        }
+
+        // Função para exibir os usuários
+        function exibeUsuarios() {
+            // Popula a tabela com os registros do banco de dados
+            let listaUsuarios = '';
+            for (let i = 0; i < db_usuarios.usuarios.length; i++) {
+                let usuario = db_usuarios.usuarios[i];
+                listaUsuarios += `<tr>
+                    <td scope="row">${usuario.nome}</td>
+                    <td>${usuario.login}</td>
+                    <td>${usuario.email}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editarUsuario(${i})">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="excluirUsuario(${i})">Excluir</button>
+                    </td>
+                </tr>`;
+            }
+
+            // Substitui as linhas do corpo da tabela
+            document.getElementById("table-usuarios").innerHTML = listaUsuarios;
+        }
+
+        // Função de inicialização da página
+        function initPage() {
+            // Verifica se o usuário está logado
+            verificaLogin();
+
+            // Associa a função de logout ao botão
+            document.getElementById('btn_logout').addEventListener('click', logoutUser);
+
+            // Informa o nome do usuário logado
+            document.getElementById('nomeUsuario').innerHTML = usuarioCorrente.nome;
+
+            // Lista os usuários 
+            exibeUsuarios();
+        }
+
+        // Função para editar um usuário
+        function editarUsuario(index) {
+            let usuario = db_usuarios.usuarios[index];
+            document.getElementById('edit-index').value = index;
+            document.getElementById('edit-username').value = usuario.login;
+            document.getElementById('edit-fullname').value = usuario.nome;
+            document.getElementById('edit-email').value = usuario.email;
+            document.getElementById('edit-password').value = usuario.senha;
+            $('#editModal').modal('show');
+        }
+
+        // Função para excluir um usuário
+        function excluirUsuario(index) {
+            if (confirm("Tem certeza que deseja excluir este usuário?")) {
+                db_usuarios.usuarios.splice(index, 1);
+                localStorage.setItem('db_usuarios', JSON.stringify(db_usuarios));
+                exibeUsuarios();
+            }
+        }
+
+        // Função para salvar as alterações do usuário
+        function salvarUsuarioEditado() {
+            let index = document.getElementById('edit-index').value;
+            let usuario = db_usuarios.usuarios[index];
+            usuario.login = document.getElementById('edit-username').value;
+            usuario.nome = document.getElementById('edit-fullname').value;
+            usuario.email = document.getElementById('edit-email').value;
+            usuario.senha = document.getElementById('edit-password').value;
+            localStorage.setItem('db_usuarios', JSON.stringify(db_usuarios));
+            $('#editModal').modal('hide');
+            exibeUsuarios();
+        }
+
+        // Associa ao evento de carga da página a função para inicializar a página
+        window.addEventListener('load', initPage);
+    </script>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Olá <span id="nomeUsuario"></span>, seja bem-vindo!</h1>
+        <div class="home-button mt-3 mb-3">
+            <a href="/tela-busca/index.html" class="btn btn-primary">Tela Home</a>
+            <button id="btn_logout" class="btn btn-danger ml-3">Efetuar Logout</button>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-usuarios" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Login</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-usuarios">
+                        <!-- Usuários serão inseridos aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar usuário -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Editar Usuário</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-form">
+                        <input type="hidden" id="edit-index">
+                        <div class="form-group">
+                            <label for="edit-username">Usuário</label>
+                            <input type="text" class="form-control" id="edit-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-fullname">Nome Completo</label>
+                            <input type="text" class="form-control" id="edit-fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-email">Email</label>
+                            <input type="email" class="form-control" id="edit-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-password">Senha</label>
+                            <input type="password" class="form-control" id="edit-password" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="salvarUsuarioEditado()">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+</body>
+
+</html>

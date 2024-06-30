@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+  
+  header {
+    width: 100%;
+    background-color: #FFD700;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  
+  .logo {
+    height: 60px; /* Mantendo o tamanho do ícone da logo */
+  }
+  
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  
+  .promo-box {
+    background-color: #ffffff;
+    border: 2px solid #FFD700;
+    color: #FFD700;
+    transition: transform 0.2s;
+  }
+  
+  .promo-box:hover {
+    transform: scale(1.05);
+  }
+  
+  .promo-box p {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .login-form {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-form .btn {
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .login-form .btn:hover {
+    background-color: #fff;
+    color: #FFD700;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 767px) {
+    .promo-box {
+        display: none;
+    }
+  
+    .logo {
+        height: 60px; /* Ajuste conforme necessário para telas menores */
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .login-form {
+        padding: 20px;
+    }
+  
+    .login-form .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+  
+    .d-flex.justify-content-between {
+        flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .header {
+        padding: 10px 0;
+    }
+  
+    .logo {
+        height: 40px;
+    }
+  
+    .login-form {
+        padding: 10px;
+    }
+  }
+  
+  footer {
+    width: 100%;
+    background-color: #FFD700;
+    padding: 10px 0;
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 1em;
+    color: #fff;
+  }
+  

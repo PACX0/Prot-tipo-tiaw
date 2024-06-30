@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busca de Produtos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/tela-busca/assents/css/styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="/tela-busca/assents/image/logo.png" alt="Logo"></a>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Pesquisar produtos ou categorias..." required>
+      <button id="searchButton"><i class="bi bi-search"></i></button>
+    </div>
+    <div class="icons">
+      <button id="alertButton" class="btn-alert">
+        <i class="bi bi-bell"></i>
+        <span>alertas</span>
+      </button>
+      <a class="entrar" id="loginBtn" href="login.html">
+        <i class="bi bi-person"></i>
+        <div>
+          <strong>Entrar</strong><br>
+          <small></small>
+        </div>
+      </a>
+      <div id="usuariologado"></div>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row" id="productContainer">
+      <!-- Cards de produtos serão adicionados aqui dinamicamente -->
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="/tela-busca/assents/js/script.js"></script>
+</body>
+
+</html>

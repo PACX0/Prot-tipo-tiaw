@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Check</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/tela-busca/assents/css/login.css">
+    <link rel="icon" href="/tela-busca/assents/image/logo2.png" type="image/png">
+</head>
+<body>
+    <header class="bg-warning py-2">
+        <div class="container d-flex align-items-center">
+          <a href="javascript:history.back()">
+            <img src="/tela-busca/assents/image/logo2.png" alt="Price Check Logo" class="logo">
+          </a>
+        </div>
+    </header>
+    <main class="container d-flex flex-column align-items-center justify-content-center mt-5">
+        <div class="row w-100 d-flex align-items-center justify-content-center">
+            <div class="col-lg-5 d-flex flex-column justify-content-center mb-4 mb-lg-0 promo-container">
+                <div class="promo-box text-warning text-center p-4 mb-4 rounded border">
+                    <p>Sua Busca por Economia Começa Aqui!</p>
+                </div>
+                <div class="promo-box text-warning text-center p-4 mb-4 rounded border">
+                    <p>Maximize Suas Compras, Minimize Seus Gastos!</p>
+                </div>
+            </div>
+            <div class="col-lg-5 d-flex justify-content-center">
+                <form class="login-form bg-white p-5 rounded shadow" id="login-form" onsubmit="return processaFormLogin(this)">
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#registerModal">Criar Conta</button>
+                        <button type="submit" class="btn btn-warning text-white">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-warning py-3 mt-5 w-100">
+        <div class="container text-center">
+            <p class="mb-0 text-white">© 2024 Price Check. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Cadastro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="register-username">Usuário</label>
+                            <input type="text" class="form-control" id="register-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-fullname">Nome Completo</label>
+                            <input type="text" class="form-control" id="register-fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" class="form-control" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Senha</label>
+                            <input type="password" class="form-control" id="register-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirmar Senha</label>
+                            <input type="password" class="form-control" id="register-confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-warning text-white w-100">Criar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/tela-busca/assents/js/login.js"></script>
+</body>
+</html>

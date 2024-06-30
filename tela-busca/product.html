@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Produto</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/tela-busca/assents/css/product.css">
+</head>
+
+<body>
+  <!-- Navbar existente -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/tela-busca/index.html"><img src="/tela-busca/assents/image/logo.png" alt="Logo"></a>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Pesquisar produtos ou categorias..." required>
+      <button id="searchButton"><i class="bi bi-search"><a href=""></a></i></button>
+    </div>
+    <div class="icons">
+      <button id="alertButton" class="btn-alert">
+        <i class="bi bi-bell"></i>
+        <span>alertas</span>
+      </button>
+      <a class="entrar" id="loginBtn" href="login.html">
+        <i class="bi bi-person"></i>
+        <div>
+          <strong>Entrar</strong><br>
+          <small></small>
+        </div>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container product-details mt-5">
+    <div class="product-image-carousel">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner zoom" id="carouselInner">
+          <!-- Imagens do carrossel serão adicionadas aqui dinamicamente -->
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <div class="carousel-thumbnails mt-3 d-flex justify-content-center" id="carouselThumbnails">
+        <!-- Miniaturas do carrossel serão adicionadas aqui dinamicamente -->
+      </div>
+    </div>
+    <div class="product-info">
+      <h1 id="productTitle"></h1>
+      <div class="price" id="productPrice"></div>
+      <div class="installments" id="productInstallments"></div>
+      <div class="free-shipping" id="productShipping"></div>
+      <a id="buyButton" class="btn btn-primary mt-3" href="#" target="_blank">Comprar agora</a>
+      <h4 class="mt-4">Especificações Técnicas</h4>
+      <div class="accordion" id="specificationsAccordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Ver Especificações Técnicas
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#specificationsAccordion">
+            <div class="card-body">
+              <table class="specification-table" id="specificationTable">
+                <!-- Especificações técnicas serão adicionadas aqui dinamicamente -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container product-description mt-5">
+    <h3>Descrição do Produto</h3>
+    <p id="productDescription"></p>
+  </div>
+
+        <!-- Carrossel de produtos relacionados -->
+        <div class="container mt-5">
+          <div class="carousel-container">
+              <h2>Produtos Relacionados</h2>
+              <div id="relatedProductCarousel" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                      <!-- Produtos relacionados aqui -->
+                  </div>
+                  <a class="carousel-control-prev" href="#relatedProductCarousel" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#relatedProductCarousel" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                  </a>
+              </div>
+          </div>
+      </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="/tela-busca/assents/js/product.js"></script>
+  <script src="/tela-busca/assents/js/script.js"></script>
+  <script>
+    
+  </script>
+
+</body>
+
+</html>
